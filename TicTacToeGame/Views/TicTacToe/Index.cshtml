@@ -1,0 +1,33 @@
+@model TicTacToeGame.Models.TicTacToeModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Game</title>
+    <link rel="stylesheet" href="~/css/styles.css"> <!-- Link to the external CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Tic Tac Toe</h1>
+        <h2>Current Player: <span class="player">@Model.CurrentPlayer</span></h2>
+        <h3 class="winner">@Model.Winner</h3>
+
+        <!-- Game board -->
+        <form method="post" asp-action="MakeMove">
+            <div class="board">
+                @for (int i = 0; i < 9; i++)
+                {
+                    <button type="submit" name="index" value="@i" class="cell">@Model.Board[i]</button>
+                }
+            </div>
+        </form>
+
+        <!-- Reset Game Button -->
+        <form method="post" asp-action="ResetGame">
+            <button type="submit" class="reset-btn">Reset Game</button>
+        </form>
+    </div>
+</body>
+</html>
